@@ -26,7 +26,7 @@
     <h1 class="text-white">{{ category }}</h1>
     <br>
     {% for v in video %}
-    <img src="{{ v.video_content.url }}" width="400" height="250" alt="{{ no_pic }}">
+    <img src="{{ v.video_preview_image.url }}" width="400" height="250" alt="{{ no_pic }}">
     <h2 class="text-white">{{ v.video_title }}</h2>
     <a href="/video/{{ v.id }}">Смотреть</a>
     <br>

@@ -28,13 +28,20 @@
       </a>
       <ul class="nav nav-pills">
         <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Главная</a></li>
+          <br>
+          {% if user.is_authenticated %}
+          <li class="nav-item"><a href="/logout" class="nav-link active" aria-current="page">Выйти</a></li>
+          {% else %}
+          <li class="nav-item"><a href="/register" class="nav-link active" aria-current="page">Регистрация</a></li>
+          <li class="nav-item"><a href="/accounts/login" class="nav-link active" aria-current="page">Войти</a></li>
+          {% endif %}
       </ul>
     </header>
     <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
         {% for v in video %}
       <div class="feature col">
         <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
-            <img src="{{ v.video_content.url }}" width="400" height="250" alt="{{ no_pic }}">
+            <img src="{{ v.video_preview_image.url }}" width="400" height="250" alt="{{ v.video_title }}">
         </div>
         <h3 class="fs-2 text-white">{{ v.video_title }}</h3>
         <a href="/video/{{ v.id }}" class="icon-link">

@@ -20,6 +20,7 @@ class VideoModel(models.Model):
     video_dislike = models.IntegerField()
     video_created_at = models.DateField(default=datetime.date.today)
     video_category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    video_preview_image = models.ImageField(upload_to='preview', blank=True, null=True)
 
     def __str__(self):
         return str(self.video_title)

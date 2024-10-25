@@ -23,15 +23,19 @@
         <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Главная</a></li>
       </ul>
     </header>
-    <h1 class="text-white">{{ video.video_title }}</h1>
+    {% for v in video %}
     <br>
-    <img src="{{ video.video_content.url }}" width="600" height="350" alt="{{ nopic }}">
+    <h2 class="text-white">{{ v.video_title }}</h2>
     <br>
+        <video width="640" height="360" controls poster="{{ v.video_preview_image.url }}">
+            <source src="{{ v.video_content.url }}" type="video/mp4">
+        </video>
+        <hr>
+    <p class="text-white">Категория: {{ v.video_category }}</p>
     <br>
-    <p class="text-white">Категория: {{ video.video_category }}</p>
+    <p class="text-white">Дата публикации: {{ v.video_created_at }}</p>
     <br>
-    <p class="text-white">Дата публикации: {{ video.video_created_at }}</p>
-    <br>
+    {% endfor %}
 </div>
 </body>
 </html>
